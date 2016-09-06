@@ -22,7 +22,7 @@ class Player:
             print("The "+item.name+" is not here.")
 
     def drop(self, item):
-        if item in self.inventory
+        if item in self.inventory:
                 self.current_room.items.append(item)
                 self.inventory.remove(item) 
         else:
