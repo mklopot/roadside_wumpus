@@ -72,3 +72,5 @@ class Dodeca():
     self.room15.exits.append(self.room20)
     self.room16.exits.append(self.room20)
 
+    self.rooms = [self.room01, self.room02, self.room03, self.room04, self.room05, self.room06, self.room07, self.room08, self.room09, self.room10, self.room11, self.room12, self.room13, self.room14, self.room15, self.room16, self.room17, self.room18, self.room19, self.room20]
+
