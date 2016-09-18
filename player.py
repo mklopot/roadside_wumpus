@@ -28,6 +28,24 @@ class Player:
         else:
             print("You do not have "+item.name+".")
 
+    def zap(self,target):
+      if "blaster" in [ item.name for item in self.inventory ]:
+        if "charge cartridge" in [ item.name for item in self.inventory ]:
+          if target in self.current_room.items:
+            self.current_room.items.remove(target)
+            for item in self.inventory:
+              if item.name == "charge cartridge":
+                self.inventory.remove(item)
+                break
+            print("ZAP!! The {} disintegrates into a million pieces!".format(target.name))
+          else:
+            print("That target is not here.")
+        else:
+          print("A blaster charge cartridge is needed to fire the blaster.")
+      else:
+        print("There is no blaster in your inventory.")
+            
+
     def status(self):
         print("You are in the "+self.current_room.name+". You feel great!")
 
