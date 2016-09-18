@@ -4,17 +4,19 @@ import game
 
 class repl(cmd.Cmd):
   def do_go(self,room_no):
-#    try:
+    try:
       game.player.move_to(game.player.current_room.exits[int(room_no)-1])
-#    except:
-#      print "No such room."
-      game.player.status()
+    except:
+      print "No such room."
+    game.post_player_action()
+    game.player.status()
 
   def do_take(self,item_no):
     try:
       game.player.take(game.player.current_room.items[int(item_no)-1])
     except:
       print "No such item."
+    game.post_player_action()
     game.player.status()
 
   def do_drop(self,item_no):
@@ -22,14 +24,17 @@ class repl(cmd.Cmd):
       game.player.drop(game.player.inventory[int(item_no)-1])
     except:
       print "No such item."
+    game.post_player_action()
     game.player.status()
 
 
   def do_zap(self, item_no):
-#    try:
+    try:
       game.player.zap(game.player.current_room.items[int(item_no)-1])
-#    except: 
-#      print "No such target."
+    except: 
+      print "No such target."
+    game.post_player_action()
+    game.player.status()
    
 
   def do_status(self, a):
