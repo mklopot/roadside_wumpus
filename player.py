@@ -32,21 +32,27 @@ class Player:
         print("You are in the "+self.current_room.name+". You feel great!")
 
         if self.current_room.exits:
+            i = 1
+            print("From here, you can go to the:")
             for exit in self.current_room.exits:
-                print("You can go to the "+exit.name+" from here.")
+                print("    {}. {}".format(i,exit.name))
+                i += 1
         else:
             print("You see no exits from this place.")
 
         if self.inventory:
+            i = 1
             print "You have:"
             for item in self.inventory:
-                print item.name
-                print
+                print("    {}. {}".format(i,item.name))
+                i += 1
         else:
-            print("You have nothing in your posession")
+            print("You have nothing in your posession.")
 
         if self.current_room.items:
+            i = 1
             print("You see here:")
             for item in self.current_room.items:
-                print(item.name)
+                print("    {}. {}".format(i,item.name))
+                i += 1
        

@@ -13,7 +13,7 @@ class Dodeca():
     self.room04 = room.Room([self.room03],"entryway") 
     self.room03.exits.append(self.room04)
 
-    self.room05 = room.Room([self.room04,self.room01],"vestubule") 
+    self.room05 = room.Room([self.room04,self.room01],"vestibule") 
     self.room04.exits.append(self.room05)
     self.room01.exits.append(self.room05)
 
