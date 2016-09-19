@@ -1,5 +1,9 @@
+#!/usr/bin/python
+
 import cmd
 import sys
+import pickle
+
 import game
 
 class repl(cmd.Cmd):
@@ -43,6 +47,29 @@ class repl(cmd.Cmd):
   def do_exit(self, a):
     print "Bye!"
     sys.exit()
+
+  def do_save(self, a):
+    print("Saving your current game...")
+    savefile = open("savefile", "wb")
+    data = game.house, game.player, game.trapdoors
+    pickle.dump(data,savefile)
+    savefile.close()
+    print("Saved.")
+
+  def do_load(self, a):
+    print("Loading game from last save point...")
+    try:
+      savefile = open("savefile", "rb")
+      game.house, game.player, game.trapdoors = pickle.load(savefile)    
+    except:
+      print("Could not load game state from file...")
+    else:
+      print("Loaded.")
+    finally:
+      savefile.close()
+    game.player.status()
+
+  do_EOF = do_exit
 
   def preloop(self):
     game.player.status()
