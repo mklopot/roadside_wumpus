@@ -11,7 +11,7 @@ class Teleporter():
       print("The shadows in this room look strange.")
     if player.current_room == self.from_room:
       player.current_room = self.to_room
-      print("The air shimmers unnaturally around you, your vision blurs, and you feel faint. As you refocus your eyes, you find yourself in a different room.")
-    self.from_room = random.choice(self.rooms)
+      print("The air shimmers unnaturally around you, your vision blurs, and you feel faint.\nAs you refocus your eyes, you find yourself in a different room.")
+      self.from_room = random.choice(self.from_room.exits)
 
     

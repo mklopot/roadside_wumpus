@@ -38,6 +38,8 @@ class Player:
                 self.inventory.remove(item)
                 break
             print("ZAP!! The {} disintegrates into a million pieces!".format(target.name))
+            if "wumpus" in target.name:
+              target.current_room = None 
           else:
             print("That target is not here.")
         else:

@@ -13,7 +13,7 @@ class repl(cmd.Cmd):
     except:
       print "No such room."
     game.post_player_action()
-    game.player.status()
+    game.status()
 
   def do_take(self,item_no):
     try:
@@ -21,7 +21,7 @@ class repl(cmd.Cmd):
     except:
       print "No such item."
     game.post_player_action()
-    game.player.status()
+    game.status()
 
   def do_drop(self,item_no):
     try:
@@ -29,7 +29,7 @@ class repl(cmd.Cmd):
     except:
       print "No such item."
     game.post_player_action()
-    game.player.status()
+    game.status()
 
 
   def do_zap(self, item_no):
@@ -38,20 +38,25 @@ class repl(cmd.Cmd):
     except: 
       print "No such target."
     game.post_player_action()
-    game.player.status()
+    game.status()
    
 
   def do_status(self, a):
-    game.player.status()
+    game.status()
+
+  def do_wait(self, a):
+    print("You wait for a few moments.")
+    game.post_player_action()
 
   def do_exit(self, a):
+    print
     print "Bye!"
     sys.exit()
 
   def do_save(self, a):
     print("Saving your current game...")
     savefile = open("savefile", "wb")
-    data = game.house, game.player, game.trapdoors
+    data = game.house, game.player, game.trapdoors, game.teleporters, game.wumpus1
     pickle.dump(data,savefile)
     savefile.close()
     print("Saved.")
@@ -60,19 +65,19 @@ class repl(cmd.Cmd):
     print("Loading game from last save point...")
     try:
       savefile = open("savefile", "rb")
-      game.house, game.player, game.trapdoors = pickle.load(savefile)    
+      game.house, game.player, game.trapdoors, game.teleporters, game.wumpus1 = pickle.load(savefile)    
     except:
       print("Could not load game state from file...")
     else:
       print("Loaded.")
     finally:
       savefile.close()
-    game.player.status()
+    game.status()
 
   do_EOF = do_exit
 
   def preloop(self):
-    game.player.status()
+    game.status()
 
 r = repl()
 r.prompt = "\n> "

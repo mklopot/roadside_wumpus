@@ -2,15 +2,15 @@ import room
 
 class Dodeca():
   def __init__(self):
-    self.room01 = room.Room([],"foyer")
+    self.room01 = room.Room([],"entryway")
 
-    self.room02 = room.Room([self.room01],"antechamber") 
+    self.room02 = room.Room([self.room01],"foyer") 
     self.room01.exits.append(self.room02)
 
     self.room03 = room.Room([self.room02],"lobby") 
     self.room02.exits.append(self.room03)
 
-    self.room04 = room.Room([self.room03],"entryway") 
+    self.room04 = room.Room([self.room03],"antechamber") 
     self.room03.exits.append(self.room04)
 
     self.room05 = room.Room([self.room04,self.room01],"vestibule") 
@@ -28,7 +28,7 @@ class Dodeca():
     self.room02.exits.append(self.room08)
 
     self.room09 = room.Room([self.room08],"marble room") 
-    self.room08.exits.append(self.room04)
+    self.room08.exits.append(self.room09)
 
     self.room10 = room.Room([self.room09,self.room03],"malachite room") 
     self.room09.exits.append(self.room10)
