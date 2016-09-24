@@ -20,7 +20,7 @@ class Wumpus():
 
   def status(self,player):
     if self.current_room in player.current_room.exits:
-      print("You smell a {}".format(self.name))
+      print("You smell a {} in an adjoining room.".format(self.name))
 
   def eat(self,food,player):
     if food in self.current_room.items:

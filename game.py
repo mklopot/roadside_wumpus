@@ -22,18 +22,19 @@ random.choice(house.rooms).items.append(item.Item("red herring",1))
 random.choice(house.rooms).items.append(item.Item("valuable artefact",20))
 wumpus1 = wumpus.Wumpus(random.choice(house.rooms),house.rooms)
 wumpus2 = wumpus.Wumpus(random.choice(house.rooms),house.rooms)
+wumpuses = [wumpus1, wumpus2]
 
 trapdoors = [trapdoor.Trapdoor(random.choice(house.rooms)),trapdoor.Trapdoor(random.choice(house.rooms))]
 teleporters = [teleporter.Teleporter(random.choice(house.rooms),random.choice(house.rooms),house.rooms),teleporter.Teleporter(random.choice(house.rooms),random.choice(house.rooms),house.rooms)]
 
 def status():
-  wumpus1.status(player)
-  wumpus2.status(player)
+  for w in wumpuses:
+    w.status(player)
   player.status()
 
 def post_player_action():
-  wumpus1(player)
-  wumpus2(player)
+  for w in wumpuses:
+    w(player)
   if player.current_room in [trap.room for trap in trapdoors]:
     trapdoors[0].fall_thru(player,random.choice(house.rooms),house.rooms)
   for t in teleporters:
@@ -41,8 +42,8 @@ def post_player_action():
   check_victory()
 
 def check_victory():
-  if wumpus1.current_room is None and wumpus2.current_room is None:
-    print "You got both wumpuses!!"
+  if False not in [ w.current_room == None for w in wumpuses ]:
+    print "You got all of the wumpuses!!"
     sys.exit()
 
  
