@@ -41,12 +41,14 @@ class Wumpus():
         return 
     if player.current_room is self.current_room:
       print("There's a {} here!".format(self.name))
+      print("The {} pounces!".format(self.name))
       print("{} got you!".format(self.name.capitalize()))
       sys.exit(1)
     for room in self.current_room.exits:
-      if "herring" in [ item.name for item in room.items ]:
-        self.move_to(room,player)
-        return
+      for name in [ item.name for item in room.items ]:
+        if "herring" in name:
+          self.move_to(room,player)
+          return
     if random.random() >  .90:
       self.move_to(random.choice(self.current_room.exits),player)
       
