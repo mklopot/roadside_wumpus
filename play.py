@@ -84,4 +84,12 @@ r.prompt = "\n> "
 print
 print "Welcome to Roadside Wumpus!"
 print
+print "Commands are:"
+print "    go   take   drop   zap   wait   status   save/load"
+print 
+print " Refer to rooms and items by their number, for example:"
+print "> go 1     or      > take 3"
+print 
+print "Hazards are: teleporters, trap doors, and TWO wumpuses!"
+print
 r.cmdloop()
