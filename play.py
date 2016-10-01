@@ -2,37 +2,74 @@
 
 import cmd
 import sys
+import difflib
 import pickle
 
 import game
 
 class repl(cmd.Cmd):
-  def do_go(self,room_no):
+  def do_go(self,room_description):
     try:
-      game.player.move_to(game.player.current_room.exits[int(room_no)-1])
+      room_no = int(room_description) - 1
+    except:
+      room_description = difflib.get_close_matches(room_description, [room.name for room in game.player.current_room.exits],1,.4)
+      if room_description:
+        room_no = [room.name for room in game.player.current_room.exits].index(room_description[0]) 
+      else:
+        print("Instructions unclear.")
+        return
+    try:
+      game.player.move_to(game.player.current_room.exits[int(room_no)])
     except:
       print "No such room."
     game.post_player_action()
     game.status()
 
-  def do_take(self,item_no):
+  def do_take(self,item_description):
     try:
-      game.player.take(game.player.current_room.items[int(item_no)-1])
+      item_no = int(item_description) - 1
+    except:
+      item_description = difflib.get_close_matches(item_description, [item.name for item in game.player.current_room.items],1,.4)
+      if item_description:
+        item_no = [item.name for item in game.player.current_room.items].index(item_description[0]) 
+      else:
+        print("Instructions unclear.")
+        return
+    try:
+      game.player.take(game.player.current_room.items[int(item_no)])
     except:
       print "No such item."
     game.post_player_action()
     game.status()
 
-  def do_drop(self,item_no):
+  def do_drop(self,item_description):
     try:
-      game.player.drop(game.player.inventory[int(item_no)-1])
+      item_no = int(item_description) - 1
+    except:
+      item_description = difflib.get_close_matches(item_description, [item.name for item in game.player.inventory],1,.4)
+      if item_description:
+        item_no = [item.name for item in game.player.inventory].index(item_description[0]) 
+      else:
+        print("Instructions unclear.")
+        return
+    try:
+      game.player.drop(game.player.inventory[int(item_no)])
     except:
       print "No such item."
     game.post_player_action()
     game.status()
 
 
-  def do_zap(self, item_no):
+  def do_zap(self, item_description):
+    try:
+      item_no = int(item_description) - 1
+    except:
+      item_description = difflib.get_close_matches(item_description, [item.name for item in game.player.current_room.items],1,.4)
+      if item_description:
+        item_no = [item.name for item in game.player.current_room.items].index(item_description[0]) 
+      else:
+        print("Instructions unclear.")
+        return
     try:
       game.player.zap(game.player.current_room.items[int(item_no)-1])
     except: 
