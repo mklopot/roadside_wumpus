@@ -42,6 +42,10 @@ class Wumpus():
     if player.current_room is self.current_room:
       print("There's a {} here!".format(self.name))
       print("The {} pounces!".format(self.name))
+      for item in player.inventory:
+        if "bracelet" in item.name:
+          item.save_life(player)
+          return
       print("{} got you!".format(self.name.capitalize()))
       sys.exit(1)
     for room in self.current_room.exits:
