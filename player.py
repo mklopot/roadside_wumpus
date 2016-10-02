@@ -8,11 +8,11 @@ class Player:
         if to_room in self.current_room.exits:
             up_down = ""
             if self.current_room.level > to_room.level:
-              up_down = "down"
+              up_down = "down "
             elif self.current_room.level < to_room.level:
-              up_down = "up"
+              up_down = "up "
 	    self.current_room = to_room
-            print("You go {} to the {}.".format(up_down,self.current_room.name))
+            print("You go {}to the {}.".format(up_down,self.current_room.name))
         else:
             print("There is no way to go to the "+to_room.name+".")
 

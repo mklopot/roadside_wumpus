@@ -90,6 +90,11 @@ class repl(cmd.Cmd):
     print "Bye!"
     sys.exit()
 
+  def do_quit(self, a):
+    print
+    print "Bye!"
+    sys.exit()
+
   def do_save(self, a):
     print("Saving your current game...")
     savefile = open("savefile", "wb")
@@ -124,8 +129,11 @@ print
 print "Commands are:"
 print "    go   take   drop   zap   wait   status   save/load"
 print 
-print " Refer to rooms and items by their number, for example:"
-print "> go 1     or      > take 3"
+print "Refer to rooms and items by their number, or name."
+print "For example:"
+print "> go 1         or          > take 3"
+print "or:"
+print "> go to the vestibule      >take blaster"
 print 
 print "Hazards are: teleporters, trap doors, and TWO wumpuses!"
 print
