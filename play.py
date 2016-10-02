@@ -26,15 +26,18 @@ class repl(cmd.Cmd):
     game.status()
 
   def do_take(self,item_description):
-    try:
-      item_no = int(item_description) - 1
-    except:
-      item_description = difflib.get_close_matches(item_description, [item.name for item in game.player.current_room.items],1,.4)
-      if item_description:
-        item_no = [item.name for item in game.player.current_room.items].index(item_description[0]) 
-      else:
-        print("Instructions unclear.")
-        return
+    if len(game.player.current_room.items) == 1:
+      item_no = 0
+    else:
+      try:
+        item_no = int(item_description) - 1
+      except:
+        item_description = difflib.get_close_matches(item_description, [item.name for item in game.player.current_room.items],1,.4)
+        if item_description:
+          item_no = [item.name for item in game.player.current_room.items].index(item_description[0]) 
+        else:
+          print("Instructions unclear.")
+          return
     try:
       game.player.take(game.player.current_room.items[int(item_no)])
     except:
@@ -43,15 +46,18 @@ class repl(cmd.Cmd):
     game.status()
 
   def do_drop(self,item_description):
-    try:
-      item_no = int(item_description) - 1
-    except:
-      item_description = difflib.get_close_matches(item_description, [item.name for item in game.player.inventory],1,.4)
-      if item_description:
-        item_no = [item.name for item in game.player.inventory].index(item_description[0]) 
-      else:
-        print("Instructions unclear.")
-        return
+    if len(game.player.inventory) == 1:
+      item_no = 0
+    else:
+      try:
+        item_no = int(item_description) - 1
+      except:
+        item_description = difflib.get_close_matches(item_description, [item.name for item in game.player.inventory],1,.4)
+        if item_description:
+          item_no = [item.name for item in game.player.inventory].index(item_description[0]) 
+        else:
+          print("Instructions unclear.")
+          return
     try:
       game.player.drop(game.player.inventory[int(item_no)])
     except:
@@ -61,17 +67,20 @@ class repl(cmd.Cmd):
 
 
   def do_zap(self, item_description):
+    if len(game.player.current_room.items) == 1:
+      item_no = 0
+    else:
+      try:
+        item_no = int(item_description) - 1
+      except:
+        item_description = difflib.get_close_matches(item_description, [item.name for item in game.player.current_room.items],1,.4)
+        if item_description:
+          item_no = [item.name for item in game.player.current_room.items].index(item_description[0]) 
+        else:
+          print("Instructions unclear.")
+          return
     try:
-      item_no = int(item_description) - 1
-    except:
-      item_description = difflib.get_close_matches(item_description, [item.name for item in game.player.current_room.items],1,.4)
-      if item_description:
-        item_no = [item.name for item in game.player.current_room.items].index(item_description[0]) 
-      else:
-        print("Instructions unclear.")
-        return
-    try:
-      game.player.zap(game.player.current_room.items[int(item_no)-1])
+      game.player.zap(game.player.current_room.items[int(item_no)])
     except: 
       print "No such target."
     game.post_player_action()
