@@ -12,9 +12,14 @@ class repl(cmd.Cmd):
     try:
       room_no = int(room_description) - 1
     except:
-      room_description = difflib.get_close_matches(room_description, [room.name for room in game.player.current_room.exits],1,.4)
+      if room_description == "back" and game.player.last_room in game.player.current_room.exits:
+        room_description = game.player.last_room.name
+      else:
+        room_description = difflib.get_close_matches(room_description, [room.name for room in game.player.current_room.exits],1,.4)
+        if room_description:
+          room_description = room_description[0]
       if room_description:
-        room_no = [room.name for room in game.player.current_room.exits].index(room_description[0]) 
+        room_no = [room.name for room in game.player.current_room.exits].index(room_description) 
       else:
         print("Instructions unclear.")
         return
@@ -22,6 +27,8 @@ class repl(cmd.Cmd):
       game.player.move_to(game.player.current_room.exits[int(room_no)])
     except:
       print "No such room."
+      return
+    game.passageway_hook(game.player,game.player.last_room,game.player.current_room)
     game.post_player_action()
     game.status()
 
@@ -42,6 +49,7 @@ class repl(cmd.Cmd):
       game.player.take(game.player.current_room.items[int(item_no)])
     except:
       print "No such item."
+      return
     game.post_player_action()
     game.status()
 
@@ -62,6 +70,7 @@ class repl(cmd.Cmd):
       game.player.drop(game.player.inventory[int(item_no)])
     except:
       print "No such item."
+      return
     game.post_player_action()
     game.status()
 
@@ -83,6 +92,7 @@ class repl(cmd.Cmd):
       game.player.zap(game.player.current_room.items[int(item_no)])
     except: 
       print "No such target."
+      return
     game.post_player_action()
     game.status()
    

@@ -54,5 +54,3 @@ def check_victory():
     print "You got all of the wumpuses!!"
     sys.exit()
 
- 
-

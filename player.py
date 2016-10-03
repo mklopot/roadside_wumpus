@@ -1,6 +1,7 @@
 class Player:
     def __init__(self, current_room):
         self.current_room = current_room
+        self.last_room = None
         self.inventory = []
         self.max_carry_weight = 100
 
@@ -11,6 +12,7 @@ class Player:
               up_down = "down "
             elif self.current_room.level < to_room.level:
               up_down = "up "
+            self.last_room = self.current_room
 	    self.current_room = to_room
             print("You go {}to the {}.".format(up_down,self.current_room.name))
         else:
