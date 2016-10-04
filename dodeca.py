@@ -20,14 +20,14 @@ class Dodeca():
     self.room06 = room.Room([self.room01],"diamond room",1)
     self.room01.exits.append(self.room06)
 
-    self.room07 = room.Room([self.room06],"emerald room",1) 
+    self.room07 = room.Room([self.room06],"emerald room",2) 
     self.room06.exits.append(self.room07)
 
     self.room08 = room.Room([self.room07,self.room02],"amber room",1) 
     self.room07.exits.append(self.room08)
     self.room02.exits.append(self.room08)
 
-    self.room09 = room.Room([self.room08],"marble room",1) 
+    self.room09 = room.Room([self.room08],"marble room",2) 
     self.room08.exits.append(self.room09)
 
     self.room10 = room.Room([self.room09,self.room03],"malachite room",1) 
@@ -37,14 +37,14 @@ class Dodeca():
     self.room11 = room.Room([self.room10],"ruby room",2) 
     self.room10.exits.append(self.room11)
 
-    self.room12 = room.Room([self.room11,self.room04],"gold room",2) 
+    self.room12 = room.Room([self.room11,self.room04],"gold room",1) 
     self.room11.exits.append(self.room12)
     self.room04.exits.append(self.room12)
  
     self.room13 = room.Room([self.room12],"silver room",2) 
     self.room12.exits.append(self.room13)
 
-    self.room14 = room.Room([self.room13,self.room05],"iridium room",2) 
+    self.room14 = room.Room([self.room13,self.room05],"iridium room",1) 
     self.room13.exits.append(self.room14)
     self.room05.exits.append(self.room14)
  
