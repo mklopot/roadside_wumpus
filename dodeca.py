@@ -55,15 +55,15 @@ class Dodeca():
     self.room16 = room.Room([self.room07],"watchtower",3) 
     self.room07.exits.append(self.room16)
 
-    self.room17 = room.Room([self.room16,self.room09],"garret",3) 
+    self.room17 = room.Room([self.room16,self.room09],"alcove",3) 
     self.room16.exits.append(self.room17)
     self.room09.exits.append(self.room17)
  
-    self.room18 = room.Room([self.room17,self.room11],"attic",3) 
+    self.room18 = room.Room([self.room17,self.room11],"sky parlor",3) 
     self.room17.exits.append(self.room18)
     self.room11.exits.append(self.room18)
 
-    self.room19 = room.Room([self.room18,self.room13],"sky parlor",3) 
+    self.room19 = room.Room([self.room18,self.room13],"attic",3) 
     self.room18.exits.append(self.room19)
     self.room13.exits.append(self.room19)
  
