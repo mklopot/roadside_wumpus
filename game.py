@@ -10,17 +10,17 @@ import trapdoor
 import amulet
 
 house = dodeca.Dodeca()
-player = player.Player(house.rooms[0])
-random.choice(house.rooms[0].exits).items.append(item.Item("blaster",5))
-house.rooms[0].items.append(item.Item("charge cartridge",1))
-random.choice(house.rooms).items.append(item.Item("small artefact",1))
+player = player.Player(house.rooms[5])
+random.choice(house.rooms[10].exits).items.append(item.Item("blaster",5))
+house.rooms[15].items.append(item.Item("charge cartridge",3))
+random.choice(house.rooms).items.append(item.Item("small artefact",10))
 
-random.choice(house.rooms).items.append(item.Item("charge cartridge",1))
-random.choice(house.rooms).items.append(item.Item("rainbow herring",1))
-random.choice(house.rooms).items.append(item.Item("brown herring",1))
-random.choice(house.rooms).items.append(item.Item("northern herring",1))
-random.choice(house.rooms).items.append(item.Item("red herring",1))
-random.choice(house.rooms).items.append(item.Item("valuable artefact",20))
+random.choice(house.rooms).items.append(item.Item("charge cartridge",3))
+random.choice(house.rooms).items.append(item.Item("rainbow herring",2))
+random.choice(house.rooms).items.append(item.Item("brown herring",2))
+random.choice(house.rooms).items.append(item.Item("northern herring",2))
+random.choice(house.rooms).items.append(item.Item("red herring",2))
+random.choice(house.rooms).items.append(item.Item("valuable artefact",80))
 wumpus1 = wumpus.Wumpus(random.choice(house.rooms),house.rooms)
 wumpus2 = wumpus.Wumpus(random.choice(house.rooms),house.rooms)
 wumpuses = [wumpus1, wumpus2]
