@@ -16,6 +16,6 @@ class Teleporter():
 
   def status(self,player):
     if self.from_room in player.current_room.exits:
-      print("You feel static electricity in the air, maybe there's a teleprorter near.")
+      print("You feel static electricity in the air, maybe there's a teleporter near.")
 
     

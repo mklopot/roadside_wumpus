@@ -8,6 +8,7 @@ class Wumpus():
     starting_room.items.append(self)
     self.habitat = habitat
     self.current_room = starting_room
+    self.description = "This wumpus is a large, smelly, heavy creature with almost mollusk-like skin. The appendages (tentacles?) have suction cups. The sharp teeth are visible. It looks hungry!"
   
   def move_to(self,to_room,player):
     if to_room in self.current_room.exits:

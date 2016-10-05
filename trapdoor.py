@@ -10,7 +10,7 @@ class Trapdoor():
     if player.inventory:
       print("Your items fell out somewhere along the way.")
       for item in player.inventory:
-        print("Lost "+item.name)
+        print("Lost "+item.name+"...")
         random.choice(items_to).items.append(item) 
       player.inventory = []
 

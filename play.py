@@ -8,6 +8,19 @@ import pickle
 import game
 
 class repl(cmd.Cmd):
+
+  def do_1(self,a):
+    self.do_go("1")
+
+  def do_2(self,a):
+    self.do_go("2")
+
+  def do_3(self,a):
+    self.do_go("3")
+
+  def do_4(self,a):
+    self.do_go("4")
+
   def do_go(self,room_description):
     try:
       room_no = int(room_description) - 1
@@ -96,6 +109,23 @@ class repl(cmd.Cmd):
     game.post_player_action()
     game.status()
    
+  def do_look(self,item):
+    if item == "":
+      print game.player.current_room.description
+      return
+    if len(game.player.current_room.items) == 1:
+      item_no = 0
+    else:
+      try:
+        item_no = int(item_description) - 1
+      except:
+        item_description = difflib.get_close_matches(item_description, [item.name for item in game.player.current_room.items],1,.4)
+        if item_description:
+          item_no = [item.name for item in game.player.current_room.items].index(item_description[0])
+        else:
+          print("Instructions unclear.")
+          return
+    print game.player.current_room.items[int(item_no)].description
 
   def do_status(self, a):
     game.status()
@@ -146,7 +176,7 @@ print
 print "Welcome to Roadside Wumpus!"
 print
 print "Commands are:"
-print "    go   take   drop   zap   wait   status   save/load"
+print "    go   take   drop   zap   look   wait   status   save/load"
 print 
 print "Refer to rooms and items by their number, or name."
 print "For example:"
@@ -155,7 +185,7 @@ print "or:"
 print "> go to the vestibule      > take blaster"
 print 
 print "You are in a courtyard, next to an old building with odd angles."
-print "There is a woman here. She says, 'PSST! I buy any old junk people can salvage from this old house."
+print "There is a woman here. She says, 'PSST! I buy any old junk people can salvage from this weird house."
 print "The more rare and interesting, the better! Oh, and there are wumpuses inside. Some folks like to hunt 'em."
 print "Watch out for: teleporters, trap doors, and TWO wumpuses!'"
 print
