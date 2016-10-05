@@ -14,4 +14,8 @@ class Teleporter():
       print("The air shimmers unnaturally around you, your vision blurs, and you feel faint.\nAs you refocus your eyes, you find yourself TELEPORTED to a different room.")
       self.from_room = random.choice(self.from_room.exits)
 
+  def status(self,player):
+    if self.from_room in player.current_room.exits:
+      print("You feel static electricity in the air, maybe there's a teleprorter near.")
+
     

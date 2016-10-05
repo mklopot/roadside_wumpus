@@ -152,8 +152,11 @@ print "Refer to rooms and items by their number, or name."
 print "For example:"
 print "> go 1         or          > take 3"
 print "or:"
-print "> go to the vestibule      >take blaster"
+print "> go to the vestibule      > take blaster"
 print 
-print "Hazards are: teleporters, trap doors, and TWO wumpuses!"
+print "You are in a courtyard, next to an old building with odd angles."
+print "There is a woman here. She says, 'PSST! I buy any old junk people can salvage from this old house."
+print "The more rare and interesting, the better! Oh, and there are wumpuses inside. Some folks like to hunt 'em."
+print "Watch out for: teleporters, trap doors, and TWO wumpuses!'"
 print
 r.cmdloop()

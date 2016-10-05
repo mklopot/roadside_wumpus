@@ -13,3 +13,8 @@ class Trapdoor():
         print("Lost "+item.name)
         random.choice(items_to).items.append(item) 
       player.inventory = []
+
+  def status(self,player):
+    if self.room in player.current_room.exits:
+      print("You feel a draft. Probably a trap door nearby.")
+

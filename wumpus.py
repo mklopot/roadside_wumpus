@@ -16,7 +16,7 @@ class Wumpus():
       self.current_room.items.append(self)
       print("You hear {} footsteps in the distance.".format(self.name))
       if player.current_room is self.current_room:
-        print("A {} walks into the room.".format(self.name)) 
+        print("A menacing-looking {} walks into the room.".format(self.name)) 
 
   def status(self,player):
     if self.current_room in player.current_room.exits:

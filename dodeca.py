@@ -2,6 +2,8 @@ import room
 
 class Dodeca():
   def __init__(self):
+    self.room00 = room.Room([],"courtyard",1)
+    
     self.room01 = room.Room([],"basement",0)
 
     self.room02 = room.Room([self.room01],"cellar",0) 
@@ -17,8 +19,9 @@ class Dodeca():
     self.room04.exits.append(self.room05)
     self.room01.exits.append(self.room05)
 
-    self.room06 = room.Room([self.room01],"entryway",1)
+    self.room06 = room.Room([self.room00,self.room01],"entryway",1)
     self.room01.exits.append(self.room06)
+    self.room00.exits.append(self.room06)
 
     self.room07 = room.Room([self.room06],"mezzanine",2) 
     self.room06.exits.append(self.room07)
@@ -41,7 +44,7 @@ class Dodeca():
     self.room11.exits.append(self.room12)
     self.room04.exits.append(self.room12)
  
-    self.room13 = room.Room([self.room12],"arcade",2) 
+    self.room13 = room.Room([self.room12],"colonnade",2) 
     self.room12.exits.append(self.room13)
 
     self.room14 = room.Room([self.room13,self.room05],"foyer",1) 
@@ -73,5 +76,5 @@ class Dodeca():
     self.room15.exits.append(self.room20)
     self.room16.exits.append(self.room20)
 
-    self.rooms = [self.room01, self.room02, self.room03, self.room04, self.room05, self.room06, self.room07, self.room08, self.room09, self.room10, self.room11, self.room12, self.room13, self.room14, self.room15, self.room16, self.room17, self.room18, self.room19, self.room20]
+    self.rooms = [self.room00, self.room01, self.room02, self.room03, self.room04, self.room05, self.room06, self.room07, self.room08, self.room09, self.room10, self.room11, self.room12, self.room13, self.room14, self.room15, self.room16, self.room17, self.room18, self.room19, self.room20]
 
