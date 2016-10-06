@@ -4,7 +4,7 @@ class Dodeca():
   def __init__(self):
     self.room00 = room.Room([],"courtyard",1)
     
-    self.room01 = room.Room([],"basement",0)
+    self.room01 = room.Room([],"basement",0,"The basement is musty and water-damaged. Rusty pipes run along the ceiling.")
 
     self.room02 = room.Room([self.room01],"cellar",0) 
     self.room01.exits.append(self.room02)
@@ -12,7 +12,7 @@ class Dodeca():
     self.room03 = room.Room([self.room02],"subterranean room",0) 
     self.room02.exits.append(self.room03)
 
-    self.room04 = room.Room([self.room03],"boiler room",0) 
+    self.room04 = room.Room([self.room03],"boiler room",0,"The walls here are lined with cinder blocks. The old boiler is rusted through, looks like it hasn't worked in ages.") 
     self.room03.exits.append(self.room04)
 
     self.room05 = room.Room([self.room04,self.room01],"understructure",0) 

@@ -15,7 +15,7 @@ player = player.Player(house.rooms[0])
 indoors = [ room for room in house.rooms if not room is house.rooms[0] ]
 random.choice(indoors).items.append(item.Item("blaster",5,"Well-made, but slightly rusty. Seems to be in good working order. Takes standard-issue cartridges."))
 house.rooms[15].items.append(item.Item("charge cartridge",3,"Standard blaster cartridge: shaped like a laptop battery, but significantly heavier. This one is nearly all spent: the indicator shows just one charge left."))
-random.choice(indoors).items.append(item.Item("small artefact",10))
+random.choice(indoors).items.append(item.Item("small artefact",10,"A small black sphere, the size of a tennis ball, extremely heavy for its size. Once ins a while, of its own accord, lights up with different colors of the rainbow, and fades again."))
 
 random.choice(indoors).items.append(item.Item("charge cartridge",3,"Standard blaster cartridge: shaped like a laptop battery, but significantly heavier. This one is nearly all spent: the indicator shows just one charge left."))
 random.choice(indoors).items.append(item.Item("rainbow herring",2,"A pickled fish, with a characteristic smell. Probably about two pounds worth. Rainbow variety, the fattiest kind."))
