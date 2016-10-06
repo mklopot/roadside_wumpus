@@ -23,8 +23,10 @@ class Player:
             if sum(i.weight for i in self.inventory) + item.weight <= self.max_carry_weight:
                 self.current_room.items.remove(item)
                 self.inventory.append(item) 
+            elif item.weight > self.max_carry_weight:
+                print(item.name.capitalize()+" is too heavy to carry.")
             else:
-                print(item.name+" is too heavy to carry right now.")
+                print(item.name.capitalize()+" is too heavy to carry right now.")
         else:
             print("The "+item.name+" is not here.")
 

@@ -4,10 +4,19 @@ import cmd
 import sys
 import difflib
 import pickle
+import code
 
 import game
 
 class repl(cmd.Cmd):
+  def do_debug(self,a):
+    banner = """
+*********************
+ Debug the Wumpus!
+Interactive Console 
+  Ctrl-D to exit
+*********************"""
+    code.interact(banner=banner,local=globals())
 
   def do_1(self,a):
     self.do_go("1")
@@ -20,6 +29,9 @@ class repl(cmd.Cmd):
 
   def do_4(self,a):
     self.do_go("4")
+
+  def do_back(self,a):
+    self.do_go("back")
 
   def do_go(self,room_description):
     try:
@@ -147,7 +159,7 @@ class repl(cmd.Cmd):
   def do_save(self, a):
     print("Saving your current game...")
     savefile = open("savefile", "wb")
-    data = game.house, game.player, game.trapdoors, game.teleporters, game.wumpuses
+    data = game.house, game.player, game.trapdoors, game.teleporters, game.wumpuses, game.amulet1
     pickle.dump(data,savefile)
     savefile.close()
     print("Saved.")
@@ -156,7 +168,7 @@ class repl(cmd.Cmd):
     print("Loading game from last save point...")
     try:
       savefile = open("savefile", "rb")
-      game.house, game.player, game.trapdoors, game.teleporters, game.wumpuses = pickle.load(savefile)    
+      game.house, game.player, game.trapdoors, game.teleporters, game.wumpuses, game.amulet1 = pickle.load(savefile)    
     except:
       print("Could not load game state from file...")
     else:
