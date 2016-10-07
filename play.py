@@ -123,22 +123,23 @@ Interactive Console
     game.status()
    
   def do_look(self,item):
-    if item == "":
+    if item == "" or item == "around":
       print game.player.current_room.description
       return
-    if len(game.player.current_room.items) == 1:
-      item_no = 0
     else:
       try:
-        item_no = int(item_description) - 1
+        item_no = int(item) - 1
+        if len(game.player.current_room.items + game.player.inventory) <= item_no:
+          print("Instructions unclear")
+          return
       except:
-        item_description = difflib.get_close_matches(item_description, [item.name for item in game.player.current_room.items],1,.4)
+        item_description = difflib.get_close_matches(item, [item.name for item in game.player.current_room.items + game.player.inventory],1,.4)
         if item_description:
-          item_no = [item.name for item in game.player.current_room.items].index(item_description[0])
+          item_no = [item.name for item in game.player.current_room.items + game.player.inventory].index(item_description[0])
         else:
           print("Instructions unclear.")
           return
-    print game.player.current_room.items[int(item_no)].description
+    print (game.player.current_room.items + game.player.inventory)[item_no].description
 
   def do_status(self, a):
     game.status()

@@ -46,7 +46,7 @@ class Player:
               if item.name == "charge cartridge":
                 self.inventory.remove(item)
                 break
-            print("ZAP!! The {} disintegrates into a million pieces!".format(target.name))
+            print("*** ZAP!! The {} disintegrates into a million pieces!!! ***\n".format(target.name))
             if "wumpus" in target.name:
               target.current_room = None 
           else:

@@ -23,7 +23,7 @@ class Dodeca():
     self.room01.exits.append(self.room06)
     self.room00.exits.append(self.room06)
 
-    self.room07 = room.Room([self.room06],"mezzanine",2","The ceiing is low, and the white paint is peeling off the walls.") 
+    self.room07 = room.Room([self.room06],"mezzanine",2,"The ceiing is low, and the white paint is peeling off the walls.") 
     self.room06.exits.append(self.room07)
 
     self.room08 = room.Room([self.room07,self.room02],"lobby",1,"The ornate woodwork is rotten, and the old flower pots have fallen over." ) 
@@ -44,7 +44,7 @@ class Dodeca():
     self.room11.exits.append(self.room12)
     self.room04.exits.append(self.room12)
  
-    self.room13 = room.Room([self.room12],"colonnade",2,"Bare white columns run up to the ceiling. An odd light fills this room."u 
+    self.room13 = room.Room([self.room12],"colonnade",2,"Bare white columns run up to the ceiling. An odd light fills this room.") 
     self.room12.exits.append(self.room13)
 
     self.room14 = room.Room([self.room13,self.room05],"foyer",1) 
