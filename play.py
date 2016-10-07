@@ -17,6 +17,7 @@ Interactive Console
   Ctrl-D to exit
 *********************"""
     code.interact(banner=banner,local=globals())
+    game.status()
 
   def do_1(self,a):
     self.do_go("1")
