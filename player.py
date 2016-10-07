@@ -4,6 +4,7 @@ class Player:
         self.last_room = None
         self.inventory = []
         self.max_carry_weight = 100
+        self.currency = 0
 
     def move_to(self, to_room):
         if to_room in self.current_room.exits:
@@ -85,3 +86,16 @@ class Player:
                 print("    {}. {}".format(i,item.name))
                 i += 1
        
+    def sell(self,item,buyer):
+      if self.current_room is not buyer.current_room:
+        print "The buyer is not here."
+      else:
+        response= raw_input("{} offers ${} for the {}. Accept? (y/n)".format(buyer.name,item.value,item.name))
+        if response[0] is "y":
+          self.inventory.remove(item)
+          self.currency += item.value
+        else:
+          print "You decline the offer."
+      
+        
+
