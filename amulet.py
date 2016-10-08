@@ -6,6 +6,7 @@ class Amulet(item.Item):
     self.weight = 1
     self.from_room = from_room
     self.to_room = to_room
+    self.value = 50000
     self.description = "A lot heavier than it looks, with very precise curvature, the gray metal seems to change shade depending on how the light falls on it.\nYou have never seen anything quite like it!"
 
   def __call__(self,player):

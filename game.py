@@ -8,23 +8,37 @@ import wumpus
 import teleporter
 import trapdoor
 import amulet
+import cabbage
+import safe
 
 house = dodeca.Dodeca()
 player = player.Player(house.rooms[0])
+buyer = item.Item("Dina the Buyer",140)
+house.rooms[0].items.append(buyer)
 
-indoors = [ room for room in house.rooms if not room is house.rooms[0] ]
-random.choice(indoors).items.append(item.Item("blaster",5,"A well-madei blaster, but slightly rusty. Seems to be in good working order. Takes standard-issue cartridges."))
+indoors = [ room for room in house.rooms if not room is house.rooms[0] and not room is house.rooms[6]]
+random.choice(indoors).items.append(item.Item("blaster",10,"A well-made blaster, but slightly rusty. Seems to be in good working order. Takes standard-issue cartridges.",value=1700))
 house.rooms[15].items.append(item.Item("charge cartridge",3,"Standard blaster cartridge: shaped like a laptop battery, but significantly heavier. This one is nearly all spent: the indicator shows just one charge left."))
-random.choice(indoors).items.append(item.Item("small artefact",10,"A small black sphere, the size of a tennis ball, extremely heavy for its size. Once ins a while, of its own accord, lights up with different colors of the rainbow, and fades again."))
+random.choice(indoors).items.append(item.Item("'Black Droplet' artefact",10,"The artefact is a black spheroid, the size of a tennis ball, extremely heavy for its size. Once in a while, of its own accord, lights up with different colors of the rainbow, and fades again.",value=3000))
 
 random.choice(indoors).items.append(item.Item("charge cartridge",3,"Standard blaster cartridge: shaped like a laptop battery, but significantly heavier. This one is nearly all spent: the indicator shows just one charge left."))
 random.choice(indoors).items.append(item.Item("rainbow herring",2,"A pickled fish, with a characteristic smell. Probably about two pounds worth. Rainbow variety, the fattiest kind."))
 random.choice(indoors).items.append(item.Item("brown herring",2,"A pickled fish, with a characteristic smell. Probably about two pounds worth. Brown variety, the cheapest kind."))
 random.choice(indoors).items.append(item.Item("northern herring",2,"A pickled fish, with a characteristic smell.  Probably about two pounds worth. Northern variety, the mildest kind."))
 random.choice(indoors).items.append(item.Item("red herring",2,"A pickled fish, with a characteristic smell. Red variety, the rarest kind, for the true herring connoseur!"))
-random.choice(indoors).items.append(item.Item("valuable artefact",95,"The artefact consists of two heavy round brass plates, interlocked together magnetically with about five inches between them. There is a thin layer of an unknown blue substance suspended in between the two plates"))
-wumpus1 = wumpus.Wumpus(random.choice(indoors),house.rooms)
-wumpus2 = wumpus.Wumpus(random.choice(indoors),house.rooms)
+random.choice(indoors).items.append(item.Item("'Witch's Wheel' artefact",95,"The artefact consists of two heavy round copper plates, interlocked together magnetically with about five inches between them. There is a thin layer of an unknown blue substance suspended between the two plates."))
+
+#safe1 = safe.Safe(random.choice(indoors))
+safe1 = safe.Safe(house.rooms[6])
+blaster2 = item.Item("blaster",10,"A well-made blaster, in great condition. Seems to be in good working order. Takes standard-issue cartridges.",value=1900)
+safe1.items.append(blaster2)
+
+cabbage1 = cabbage.Cabbage(indoors[0])
+indoors[0].items.append(cabbage1)
+cabbages = [cabbage1]
+
+wumpus1 = wumpus.Wumpus(random.choice(indoors),indoors)
+wumpus2 = wumpus.Wumpus(random.choice(indoors),indoors)
 wumpuses = [wumpus1, wumpus2]
 
 amulet_from_room = random.choice(indoors)
@@ -38,11 +52,15 @@ def status():
     t.status(player)
   for t in teleporters:
     t.status(player)
+  for c in cabbages:
+    c.status(player)
   for w in wumpuses:
     w.status(player)
   player.status()
 
 def post_player_action():
+  for c in cabbages:
+    c(player)
   for w in wumpuses:
     w(player)
   if player.current_room in [trap.room for trap in trapdoors]:
@@ -58,5 +76,5 @@ def passageway_hook(player,from_room,to_room):
 def check_victory():
   if False not in [ w.current_room == None for w in wumpuses ]:
     print "You got all of the wumpuses!!"
-    sys.exit()
+    #sys.exit()
 

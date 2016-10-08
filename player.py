@@ -48,7 +48,7 @@ class Player:
                 self.inventory.remove(item)
                 break
             print("*** ZAP!! The {} disintegrates into a million pieces!!! ***\n".format(target.name))
-            if "wumpus" in target.name:
+            if "wumpus" in target.name or "Cabbage" in target.name:
               target.current_room = None 
           else:
             print("That target is not here.")
@@ -87,13 +87,14 @@ class Player:
                 i += 1
        
     def sell(self,item,buyer):
-      if self.current_room is not buyer.current_room:
+      if buyer not in self.current_room.items:
         print "The buyer is not here."
       else:
-        response= raw_input("{} offers ${} for the {}. Accept? (y/n)".format(buyer.name,item.value,item.name))
-        if response[0] is "y":
+        response= raw_input("{} offers ${} for the {}. Accept? (y/n) ".format(buyer.name,item.value,item.name))
+        if response.lower()[0] is "y":
           self.inventory.remove(item)
           self.currency += item.value
+          print("You now have a total of ${}.".format(self.currency))
         else:
           print "You decline the offer."
       
