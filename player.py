@@ -5,6 +5,7 @@ class Player:
         self.inventory = []
         self.max_carry_weight = 100
         self.currency = 0
+        self.destroyed = []
 
     def move_to(self, to_room):
         if to_room in self.current_room.exits:
@@ -43,6 +44,7 @@ class Player:
         if "charge cartridge" in [ item.name for item in self.inventory ]:
           if target in self.current_room.items:
             self.current_room.items.remove(target)
+            self.destroyed.append(target)
             for item in self.inventory:
               if item.name == "charge cartridge":
                 self.inventory.remove(item)

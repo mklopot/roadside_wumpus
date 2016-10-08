@@ -190,18 +190,21 @@ Interactive Console
     print
     if game.player.currency > 0:
       print "You made ${}.".format(game.player.currency)
+    if game.player.destroyed:
+      print "You managed to destroy:"
+      for item in game.player.destroyed:
+        print " - {}".format(item.name)
     print "Bye!"
     sys.exit()
 
-  def do_quit(self, a):
-    print
-    print "Bye!"
-    sys.exit()
+  do_quit = do_exit
+
+  do_EOF = do_exit
 
   def do_save(self, a):
     print("Saving your current game...")
     savefile = open("savefile", "wb")
-    data = game.house, game.player, game.trapdoors, game.teleporters, game.wumpuses, game.amulet1, game.buyer
+    data = game.house, game.player, game.trapdoors, game.teleporters, game.wumpuses, game.amulet1, game.buyer, game.cabbages, game.safe1
     pickle.dump(data,savefile)
     savefile.close()
     print("Saved.")
@@ -210,7 +213,7 @@ Interactive Console
     print("Loading game from last save point...")
     try:
       savefile = open("savefile", "rb")
-      game.house, game.player, game.trapdoors, game.teleporters, game.wumpuses, game.amulet1, game.buyer = pickle.load(savefile)    
+      game.house, game.player, game.trapdoors, game.teleporters, game.wumpuses, game.amulet1, game.buyer, game.cabbages, game.safe1 = pickle.load(savefile)    
     except:
       print("Could not load game state from file...")
     else:
@@ -218,8 +221,6 @@ Interactive Console
     finally:
       savefile.close()
     game.status()
-
-  do_EOF = do_exit
 
   def preloop(self):
     game.status()
