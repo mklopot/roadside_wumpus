@@ -7,6 +7,7 @@ class Cabbage():
     self.weight = 300
     self.description = "Something akin to a mutated fungus, the Devil's Spittin' Cabbage is a mottled sickly yellowish-green clump that spits deadly slime."
     self.current_room = current_room
+    current_room.items.append(self)
   
   def status(self,player):
     if self.current_room in player.current_room.exits:

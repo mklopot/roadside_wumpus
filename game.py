@@ -16,39 +16,41 @@ player = player.Player(house.rooms[0])
 buyer = item.Item("Dina the Buyer",140)
 house.rooms[0].items.append(buyer)
 
-indoors = [ room for room in house.rooms if not room is house.rooms[0] and not room is house.rooms[6]]
-random.choice(indoors).items.append(item.Item("blaster",10,"A well-made blaster, but slightly rusty. Seems to be in good working order. Takes standard-issue cartridges.",value=1700))
+## The Courtyard and the Entryway should be clear of hazards, hazards can only be inside.
+inside = [ room for room in house.rooms if not room is house.rooms[0] and not room is house.rooms[6]]
+
+random.choice(inside).items.append(item.Item("blaster",10,"A well-made blaster, but slightly rusty. Seems to be in good working order. Takes standard-issue cartridges.",value=1700))
 house.rooms[15].items.append(item.Item("blaster cartridge",3,"Standard blaster cartridge: shaped like a laptop battery, but significantly heavier. This one is nearly all spent: the indicator shows just one charge left.",value=10))
-random.choice(indoors).items.append(item.Item("'Black Droplet' artefact",10,"The artefact is a black spheroid, the size of a tennis ball, extremely heavy for its size. Once in a while, of its own accord, lights up with different colors of the rainbow, and fades again.",value=3000))
-random.choice(indoors).items.append(item.Item("'Black Droplet' artefact",10,"The artefact is a black spheroid, the size of a tennis ball, extremely heavy for its size. Once in a while, of its own accord, lights up with different colors of the rainbow, and fades again.",value=3000))
-random.choice(indoors).items.append(item.Item("'Black Droplet' artefact",10,"The artefact is a black spheroid, the size of a tennis ball, extremely heavy for its size. Once in a while, of its own accord, lights up with different colors of the rainbow, and fades again.",value=3000))
+random.choice(inside).items.append(item.Item("'Black Droplet' artefact",10,"The artefact is a black spheroid, the size of a tennis ball, extremely heavy for its size. Once in a while, of its own accord, lights up with different colors of the rainbow, and fades again.",value=3000))
+random.choice(inside).items.append(item.Item("'Black Droplet' artefact",10,"The artefact is a black spheroid, the size of a tennis ball, extremely heavy for its size. Once in a while, of its own accord, lights up with different colors of the rainbow, and fades again.",value=3000))
+random.choice(inside).items.append(item.Item("'Black Droplet' artefact",10,"The artefact is a black spheroid, the size of a tennis ball, extremely heavy for its size. Once in a while, of its own accord, lights up with different colors of the rainbow, and fades again.",value=3000))
 
-random.choice(indoors).items.append(item.Item("blaster cartridge",3,"Standard blaster cartridge: shaped like a laptop battery, but much heavier. This one is nearly all spent: the indicator shows just one charge left.",value=10))
-random.choice(indoors).items.append(item.Item("rainbow herring",2,"A pickled fish, with a characteristic smell. Probably about two pounds worth. Rainbow variety, the fattiest kind.",value=3))
-random.choice(indoors).items.append(item.Item("brown herring",2,"A pickled fish, with a characteristic smell. Probably about two pounds worth. Brown variety, the cheapest kind.",value=3))
-random.choice(indoors).items.append(item.Item("northern herring",2,"A pickled fish, with a characteristic smell.  Probably about two pounds worth. Northern variety, the mildest kind.",value=3))
-random.choice(indoors).items.append(item.Item("red herring",2,"A pickled fish, with a characteristic smell. Red variety, the rarest kind, for the true herring connoseur!",value=3))
-random.choice(indoors).items.append(item.Item("'Witch's Wheel' artefact",95,"The artefact consists of two heavy round copper plates, interlocked together magnetically with about five inches between them. There is a thin layer of an unknown blue substance suspended between the two plates.",value=10000))
+random.choice(inside).items.append(item.Item("blaster cartridge",3,"Standard blaster cartridge: shaped like a laptop battery, but much heavier. This one is nearly all spent: the indicator shows just one charge left.",value=10))
+random.choice(inside).items.append(item.Item("rainbow herring",2,"A pickled fish, with a characteristic smell. Probably about two pounds worth. Rainbow variety, the fattiest kind.",value=3))
+random.choice(inside).items.append(item.Item("brown herring",2,"A pickled fish, with a characteristic smell. Probably about two pounds worth. Brown variety, the cheapest kind.",value=3))
+random.choice(inside).items.append(item.Item("northern herring",2,"A pickled fish, with a characteristic smell.  Probably about two pounds worth. Northern variety, the mildest kind.",value=3))
+random.choice(inside).items.append(item.Item("red herring",2,"A pickled fish, with a characteristic smell. Red variety, the rarest kind, for the true herring connoseur!",value=3))
+random.choice(inside).items.append(item.Item("'Witch's Wheel' artefact",95,"The artefact consists of two heavy round copper plates, interlocked together magnetically with about five inches between them. There is a thin layer of an unknown blue substance suspended between the two plates.",value=10000))
 
-safe1 = safe.Safe(random.choice(indoors))
+safe1 = safe.Safe(random.choice(inside))
 blaster2 = item.Item("blaster",10,"A well-made blaster, in great condition. Seems to be in good working order. Takes standard-issue cartridges.",value=1900)
 safe1.items.append(blaster2)
 safe1.items.append(item.Item("blaster cartridge",3,"Standard blaster cartridge: shaped like a laptop battery, but much heavier. This one is nearly all spent: the indicator shows just one charge left.",value=10))
 safe1.items.append(item.Item("blaster cartridge",3,"Standard blaster cartridge: shaped like a laptop battery, but much heavier. This one is nearly all spent: the indicator shows just one charge left.",value=10))
 
-cabbage1 = cabbage.Cabbage(indoors[0])
-indoors[0].items.append(cabbage1)
-cabbages = [cabbage1]
+cabbage1 = cabbage.Cabbage(random.choice(inside))
+cabbage2 = cabbage.Cabbage(random.choice(inside))
+cabbages = [cabbage1,cabbage2]
 
-wumpus1 = wumpus.Wumpus(random.choice(indoors),indoors)
-wumpus2 = wumpus.Wumpus(random.choice(indoors),indoors)
+wumpus1 = wumpus.Wumpus(random.choice(inside),inside)
+wumpus2 = wumpus.Wumpus(random.choice(inside),inside)
 wumpuses = [wumpus1, wumpus2]
 
-amulet_from_room = random.choice(indoors)
+amulet_from_room = random.choice(inside)
 amulet1 = amulet.Amulet(amulet_from_room,random.choice(amulet_from_room.exits))
 
-trapdoors = [trapdoor.Trapdoor(random.choice(indoors)),trapdoor.Trapdoor(random.choice(indoors))]
-teleporters = [teleporter.Teleporter(random.choice(indoors),random.choice(indoors),indoors),teleporter.Teleporter(random.choice(indoors),random.choice(indoors),indoors)]
+trapdoors = [trapdoor.Trapdoor(random.choice(inside)),trapdoor.Trapdoor(random.choice(inside))]
+teleporters = [teleporter.Teleporter(random.choice(inside),random.choice(inside),inside),teleporter.Teleporter(random.choice(inside),random.choice(inside),inside)]
 
 def status():
   for t in trapdoors:
@@ -67,7 +69,7 @@ def post_player_action():
   for w in wumpuses:
     w(player)
   if player.current_room in [trap.room for trap in trapdoors]:
-    trapdoors[0].fall_thru(player,random.choice(indoors),indoors)
+    trapdoors[0].fall_thru(player,random.choice(inside),inside)
   for t in teleporters:
     t(player)
   check_victory()

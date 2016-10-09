@@ -61,7 +61,7 @@ class Player:
             
 
     def status(self):
-        print("You are in the "+self.current_room.name)
+        print("You are in the "+self.current_room.name+".")
 
         if self.current_room.exits:
             i = 1
