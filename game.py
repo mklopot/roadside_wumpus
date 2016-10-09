@@ -18,12 +18,12 @@ house.rooms[0].items.append(buyer)
 
 indoors = [ room for room in house.rooms if not room is house.rooms[0] and not room is house.rooms[6]]
 random.choice(indoors).items.append(item.Item("blaster",10,"A well-made blaster, but slightly rusty. Seems to be in good working order. Takes standard-issue cartridges.",value=1700))
-house.rooms[15].items.append(item.Item("charge cartridge",3,"Standard blaster cartridge: shaped like a laptop battery, but significantly heavier. This one is nearly all spent: the indicator shows just one charge left.",value=10))
+house.rooms[15].items.append(item.Item("blaster cartridge",3,"Standard blaster cartridge: shaped like a laptop battery, but significantly heavier. This one is nearly all spent: the indicator shows just one charge left.",value=10))
 random.choice(indoors).items.append(item.Item("'Black Droplet' artefact",10,"The artefact is a black spheroid, the size of a tennis ball, extremely heavy for its size. Once in a while, of its own accord, lights up with different colors of the rainbow, and fades again.",value=3000))
 random.choice(indoors).items.append(item.Item("'Black Droplet' artefact",10,"The artefact is a black spheroid, the size of a tennis ball, extremely heavy for its size. Once in a while, of its own accord, lights up with different colors of the rainbow, and fades again.",value=3000))
 random.choice(indoors).items.append(item.Item("'Black Droplet' artefact",10,"The artefact is a black spheroid, the size of a tennis ball, extremely heavy for its size. Once in a while, of its own accord, lights up with different colors of the rainbow, and fades again.",value=3000))
 
-random.choice(indoors).items.append(item.Item("charge cartridge",3,"Standard blaster cartridge: shaped like a laptop battery, but significantly heavier. This one is nearly all spent: the indicator shows just one charge left.",value=10))
+random.choice(indoors).items.append(item.Item("blaster cartridge",3,"Standard blaster cartridge: shaped like a laptop battery, but much heavier. This one is nearly all spent: the indicator shows just one charge left.",value=10))
 random.choice(indoors).items.append(item.Item("rainbow herring",2,"A pickled fish, with a characteristic smell. Probably about two pounds worth. Rainbow variety, the fattiest kind.",value=3))
 random.choice(indoors).items.append(item.Item("brown herring",2,"A pickled fish, with a characteristic smell. Probably about two pounds worth. Brown variety, the cheapest kind.",value=3))
 random.choice(indoors).items.append(item.Item("northern herring",2,"A pickled fish, with a characteristic smell.  Probably about two pounds worth. Northern variety, the mildest kind.",value=3))
@@ -33,6 +33,8 @@ random.choice(indoors).items.append(item.Item("'Witch's Wheel' artefact",95,"The
 safe1 = safe.Safe(random.choice(indoors))
 blaster2 = item.Item("blaster",10,"A well-made blaster, in great condition. Seems to be in good working order. Takes standard-issue cartridges.",value=1900)
 safe1.items.append(blaster2)
+safe1.items.append(item.Item("blaster cartridge",3,"Standard blaster cartridge: shaped like a laptop battery, but much heavier. This one is nearly all spent: the indicator shows just one charge left.",value=10))
+safe1.items.append(item.Item("blaster cartridge",3,"Standard blaster cartridge: shaped like a laptop battery, but much heavier. This one is nearly all spent: the indicator shows just one charge left.",value=10))
 
 cabbage1 = cabbage.Cabbage(indoors[0])
 indoors[0].items.append(cabbage1)

@@ -41,12 +41,12 @@ class Player:
 
     def zap(self,target):
       if "blaster" in [ item.name for item in self.inventory ]:
-        if "charge cartridge" in [ item.name for item in self.inventory ]:
+        if "blaster cartridge" in [ item.name for item in self.inventory ]:
           if target in self.current_room.items:
             self.current_room.items.remove(target)
             self.destroyed.append(target)
             for item in self.inventory:
-              if item.name == "charge cartridge":
+              if item.name == "blaster cartridge":
                 self.inventory.remove(item)
                 break
             print("*** ZAP!! The {} disintegrates into a million pieces!!! ***\n".format(target.name))
@@ -61,7 +61,7 @@ class Player:
             
 
     def status(self):
-        print("You are in the "+self.current_room.name+". You feel great!")
+        print("You are in the "+self.current_room.name)
 
         if self.current_room.exits:
             i = 1

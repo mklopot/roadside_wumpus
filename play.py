@@ -165,7 +165,7 @@ Interactive Console
       combo = max(combo)
     for item in game.player.current_room.items:
       if "safe" in item.name:
-        if combo == "":
+        if combo == []:
           combo = raw_input("Enter combination: ")
         try:
           combo = int(combo)
@@ -243,6 +243,7 @@ print
 print 
 print "You are in a courtyard, next to an old building with odd angles."
 print "There is a woman here. She is Dina the Buyer."
+print
 print "She says, 'PSST! I buy any old junk you can salvage from this weird house."
 print "The more rare and interesting, the better! Oh, and there are wumpuses inside."
 print "Some folks like to hunt 'em!"
