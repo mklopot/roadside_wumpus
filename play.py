@@ -204,7 +204,7 @@ Interactive Console
   def do_save(self, a):
     print("Saving your current game...")
     savefile = open("savefile", "wb")
-    data = game.house, game.player, game.trapdoors, game.teleporters, game.wumpuses, game.amulet1, game.buyer, game.cabbages, game.safe1
+    data = game.house, game.inside, game.player, game.trapdoors, game.teleporters, game.wumpuses, game.amulet1, game.buyer, game.cabbages, game.safe1
     pickle.dump(data,savefile)
     savefile.close()
     print("Saved.")
@@ -213,7 +213,7 @@ Interactive Console
     print("Loading game from last save point...")
     try:
       savefile = open("savefile", "rb")
-      game.house, game.player, game.trapdoors, game.teleporters, game.wumpuses, game.amulet1, game.buyer, game.cabbages, game.safe1 = pickle.load(savefile)    
+      game.house, game.inside, game.player, game.trapdoors, game.teleporters, game.wumpuses, game.amulet1, game.buyer, game.cabbages, game.safe1 = pickle.load(savefile)    
     except:
       print("Could not load game state from file...")
     else:
