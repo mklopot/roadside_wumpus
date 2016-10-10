@@ -180,6 +180,7 @@ Interactive Console
 
   def do_status(self, a):
     game.status()
+    game.player.score()
 
   def do_wait(self, a):
     print("You wait for a few moments.")
@@ -188,12 +189,7 @@ Interactive Console
 
   def do_exit(self, a):
     print
-    if game.player.currency > 0:
-      print "You made ${}.".format(game.player.currency)
-    if game.player.destroyed:
-      print "You managed to destroy:"
-      for item in game.player.destroyed:
-        print " - {}".format(item.name)
+    game.player.score()
     print "Bye!"
     sys.exit()
 

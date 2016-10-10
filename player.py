@@ -79,14 +79,23 @@ class Player:
                 print("    {}. {}".format(i,item.name))
                 i += 1
         else:
-            print("You have nothing in your posession.")
-
+            print("You have no items in your posession.")
+ 
         if self.current_room.items:
             i = 1
             print("You see here:")
             for item in self.current_room.items:
                 print("    {}. {}".format(i,item.name))
                 i += 1
+
+    def score(self):
+      if self.currency:
+        print("You have made ${}.".format(self.currency))
+      if self.destroyed:
+        print "You managed to destroy:"
+        for item in self.destroyed:
+          print " - {}".format(item.name)
+
        
     def sell(self,item,buyer):
       if buyer not in self.current_room.items:
