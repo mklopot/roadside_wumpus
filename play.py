@@ -195,13 +195,15 @@ Interactive Console
 
   do_quit = do_exit
 
+  do_bye = do_exit
+
   do_EOF = do_exit
 
   def do_save(self, a):
     print("Saving your current game...")
     savefile = open("savefile", "wb")
     data = game.house, game.inside, game.player, game.trapdoors, game.teleporters, game.wumpuses, game.amulet1, game.buyer, game.cabbages, game.safe1
-    pickle.dump(data,savefile)
+    pickle.dump(data,savefile,pickle.HIGHEST_PROTOCOL)
     savefile.close()
     print("Saved.")
 
