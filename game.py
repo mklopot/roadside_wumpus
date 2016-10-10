@@ -68,10 +68,10 @@ def post_player_action():
     c(player)
   for w in wumpuses:
     w(player)
-  if player.current_room in [trap.room for trap in trapdoors]:
-    trapdoors[0].fall_thru(player,random.choice(inside),inside)
   for t in teleporters:
     t(player)
+  if player.current_room in [trap.room for trap in trapdoors]:
+    trapdoors[0].fall_thru(player,random.choice(inside),inside)
   check_victory()
 
 def passageway_hook(player,from_room,to_room):
