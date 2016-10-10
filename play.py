@@ -239,14 +239,14 @@ __        __
 print "Welcome to Roadside Wumpus!"
 print
 print "Commands are:"
-print "    go   take   drop   zap   look   wait   unlock   status   save/load"
+print "go   take   drop   zap   look   wait   unlock   status   save/load   exit"
 print 
 print "Refer to rooms and items by their number, or name."
 print "For example:"
 print "> go 1         or          > take 3"
 print "or:"
 print "> go to the vestibule      > take blaster"
-print "_______________________________________________________________"
+print "_________________________________________________________________________"
 print 
 print 
 print "You are in a courtyard, next to an old building with odd angles."
