@@ -17,6 +17,9 @@ class Player:
             self.last_room = self.current_room
 	    self.current_room = to_room
             print("You go {}to the {}.".format(up_down,self.current_room.name))
+            if not self in self.current_room.seen_by:
+              print self.current_room.description
+              self.current_room.seen_by.append(self)
         else:
             print("There is no way to go to the "+to_room.name+".")
 

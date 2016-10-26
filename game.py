@@ -13,7 +13,7 @@ import safe
 
 house = dodeca.Dodeca()
 player = player.Player(house.rooms[0])
-buyer = item.Item("Dina the Buyer",140)
+buyer = item.Item("Dina the Buyer",140,"Dina is middle-aged, disheveled, and dressed in paramilitary fatigues. She is carrying a metallic briefcase.")
 house.rooms[0].items.append(buyer)
 
 ## The Courtyard and the Entryway should be clear of hazards, hazards can only be inside.

@@ -5,3 +5,4 @@ class Room:
         self.level = level
         self.items = []
         self.description = description.format(name)
+        self.seen_by = []
