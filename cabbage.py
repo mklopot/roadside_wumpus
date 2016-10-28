@@ -1,7 +1,7 @@
 import sys
 import random
 
-class Cabbage():
+class Cabbage(object):
   def __init__(self,current_room):
     self.name = "Devil's Cabbage"
     self.weight = 300

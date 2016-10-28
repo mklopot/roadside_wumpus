@@ -1,6 +1,6 @@
 import random
 
-class Safe():
+class Safe(object):
   def __init__(self,room,items=[]):
     self.name = "heavy safe"
     self.weight = 400

@@ -1,6 +1,6 @@
 import random
 
-class Trapdoor():
+class Trapdoor(object):
   def __init__(self,room):
     self.room = room
 

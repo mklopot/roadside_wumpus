@@ -1,4 +1,4 @@
-class Player:
+class Player(object):
     def __init__(self, current_room):
         self.current_room = current_room
         self.last_room = None
@@ -19,11 +19,15 @@ class Player:
             print("You go {}to the {}.".format(up_down,self.current_room.name))
             if not self in self.current_room.seen_by:
               print self.current_room.description
+              print
               self.current_room.seen_by.append(self)
         else:
             print("There is no way to go to the "+to_room.name+".")
 
     def take(self, item):
+        if type(item).__name__ == "Buyer":
+          print "You decide against it."
+          return
         if item in self.current_room.items:
             if sum(i.weight for i in self.inventory) + item.weight <= self.max_carry_weight:
                 self.current_room.items.remove(item)
@@ -43,6 +47,9 @@ class Player:
             print("You do not have "+item.name+".")
 
     def zap(self,target):
+      if type(item).__name__ == "Buyer":
+        print "You decide against it."
+        return
       if "blaster" in [ item.name for item in self.inventory ]:
         if "blaster cartridge" in [ item.name for item in self.inventory ]:
           if target in self.current_room.items:
@@ -53,7 +60,7 @@ class Player:
                 self.inventory.remove(item)
                 break
             print("*** ZAP!! The {} disintegrates into a million pieces!!! ***\n".format(target.name))
-            if "wumpus" in target.name or "Cabbage" in target.name:
+            if type(target).__name__ in ["Wumpus","Cabbage"] :
               target.current_room = None 
           else:
             print("That target is not here.")

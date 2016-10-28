@@ -1,6 +1,6 @@
 import random
 
-class Teleporter():
+class Teleporter(object):
   def __init__(self,from_room,to_room, rooms):
     self.from_room = from_room
     self.to_room = to_room

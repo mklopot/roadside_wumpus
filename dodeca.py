@@ -1,6 +1,6 @@
 import room
 
-class Dodeca():
+class Dodeca(object):
   def __init__(self):
     self.room00 = room.Room([],"courtyard",1,"You are outside the oddly angular house. There is some muilched landscaping here, and an oak tree. A woman sits under the tree. She'll buy almost anything you can recover from the old building. Up a few steps there is a heavy door to the interior.")
     

@@ -1,7 +1,7 @@
 import sys
 import random
 
-class Wumpus():
+class Wumpus(object):
   def __init__(self,starting_room,habitat):
     self.name = "wumpus"
     self.weight = 300
@@ -44,7 +44,7 @@ class Wumpus():
       print("There's a {} here!".format(self.name))
       print("The {} pounces!".format(self.name))
       for item in player.inventory:
-        if "bracelet" in item.name:
+        if type(item).__name__ is "Amulet":
           item.save_life(player)
           return
       print("{} got you!".format(self.name.capitalize()))
