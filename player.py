@@ -47,7 +47,7 @@ class Player(object):
             print("You do not have "+item.name+".")
 
     def zap(self,target):
-      if type(item).__name__ == "Buyer":
+      if type(target).__name__ == "Buyer":
         print "You decide against it."
         return
       if "blaster" in [ item.name for item in self.inventory ]:

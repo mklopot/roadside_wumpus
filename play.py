@@ -117,7 +117,7 @@ Interactive Console
           return
     try:
       game.player.zap(game.player.current_room.items[int(item_no)])
-    except: 
+    except Exception as e: 
       print "No such target."
       return
     game.post_player_action()

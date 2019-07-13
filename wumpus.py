@@ -37,7 +37,7 @@ class Wumpus(object):
     if self.current_room is None:
       return
     for item in self.current_room.items:
-      if "herring" in item.name:
+      if type(item).__name__ is 'Edible':
         self.eat(item,player)
         return 
     if player.current_room is self.current_room:
@@ -51,7 +51,7 @@ class Wumpus(object):
       sys.exit(1)
     for room in self.current_room.exits:
       for name in [ item.name for item in room.items ]:
-        if "herring" in name:
+        if type(item).__name__ is 'Edible':
           self.move_to(room,player)
           return
     if random.random() >  .90:

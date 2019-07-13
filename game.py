@@ -11,6 +11,7 @@ import amulet
 import cabbage
 import safe
 import buyer
+import edible
 
 house = dodeca.Dodeca()
 player = player.Player(house.rooms[0])
@@ -27,10 +28,10 @@ random.choice(inside).items.append(item.Item("'Black Droplet' artefact",10,"The 
 random.choice(inside).items.append(item.Item("'Black Droplet' artefact",10,"The artefact is a black spheroid, the size of a tennis ball, extremely heavy for its size. Once in a while, of its own accord, lights up with different colors of the rainbow, and fades again.",value=3000))
 
 random.choice(inside).items.append(item.Item("blaster cartridge",3,"Standard blaster cartridge: shaped like a laptop battery, but much heavier. This one is nearly all spent: the indicator shows just one charge left.",value=10))
-random.choice(inside).items.append(item.Item("rainbow herring",2,"A pickled fish, with a characteristic smell. Probably about two pounds worth. Rainbow variety, the fattiest kind.",value=3))
-random.choice(inside).items.append(item.Item("brown herring",2,"A pickled fish, with a characteristic smell. Probably about two pounds worth. Brown variety, the cheapest kind.",value=3))
-random.choice(inside).items.append(item.Item("northern herring",2,"A pickled fish, with a characteristic smell.  Probably about two pounds worth. Northern variety, the mildest kind.",value=3))
-random.choice(inside).items.append(item.Item("red herring",2,"A pickled fish, with a characteristic smell. Red variety, the rarest kind, for the true herring connoseur!",value=3))
+random.choice(inside).items.append(edible.Edible("rainbow herring",2,"A pickled fish, with a characteristic smell. Probably about two pounds worth. Rainbow variety, the fattiest kind.",value=3))
+random.choice(inside).items.append(edible.Edible("brown herring",2,"A pickled fish, with a characteristic smell. Probably about two pounds worth. Brown variety, the cheapest kind.",value=3))
+random.choice(inside).items.append(edible.Edible("northern herring",2,"A pickled fish, with a characteristic smell.  Probably about two pounds worth. Northern variety, the mildest kind.",value=3))
+random.choice(inside).items.append(edible.Edible("red herring",2,"A pickled fish, with a characteristic smell. Red variety, the rarest kind, for the true herring connoseur!",value=3))
 random.choice(inside).items.append(item.Item("'Witch's Wheel' artefact",95,"The artefact consists of two heavy round copper plates, interlocked together magnetically with about five inches between them. There is a thin layer of an unknown blue substance suspended between the two plates.",value=10000))
 
 safe1 = safe.Safe(random.choice(inside))
