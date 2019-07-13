@@ -2,7 +2,7 @@ import room
 
 class Dodeca(object):
   def __init__(self):
-    self.room00 = room.Room([],"courtyard",1,"You are outside the oddly angular house. There is some muilched landscaping here, and an oak tree. A woman sits under the tree. She'll buy almost anything you can recover from the old building. Up a few steps there is a heavy door to the interior.")
+    self.room00 = room.Room([],"courtyard",1,"You are outside the oddly angular house. There is some mulched landscaping here, and an oak tree. A woman sits under the tree. She'll buy almost anything you can recover from the old building. Up a few steps there is a heavy door to the interior.")
     
     self.room01 = room.Room([],"basement",0,"The basement is musty and water-damaged. Rusty pipes run along the ceiling.")
 
@@ -30,14 +30,14 @@ class Dodeca(object):
     self.room07.exits.append(self.room08)
     self.room02.exits.append(self.room08)
 
-    self.room09 = room.Room([self.room08],"library",2,"The walls are covered with bookshelves, floor to ceiling, but the dessicated old boosk crumble to dust as soon as you touch them.") 
+    self.room09 = room.Room([self.room08],"library",2,"The walls are covered with bookshelves, floor to ceiling, but the dessicated old books crumble to dust as soon as you touch them.") 
     self.room08.exits.append(self.room09)
 
     self.room10 = room.Room([self.room09,self.room03],"antechamber",1) 
     self.room09.exits.append(self.room10)
     self.room03.exits.append(self.room10)
  
-    self.room11 = room.Room([self.room10],"armory",2,"Only heavy cast iron hooks on the walls remain where enourmous arcane laser rifles once hanged. A faint smell of metal lubricant is in the air.") 
+    self.room11 = room.Room([self.room10],"armory",2,"Only heavy cast iron hooks on the walls remain where enormous arcane laser rifles once hanged. A faint metallic smell is in the air.") 
     self.room10.exits.append(self.room11)
 
     self.room12 = room.Room([self.room11,self.room04],"vestibule",1) 
